@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<manifest>
+  <control namespace="GreenRed" constructor="GreenRedField" version="1.0.0" display-name-key="GreenRedField_DisplayName" description-key="GreenRedField_Desc" control-type="standard">
+    <!-- 
+      This is a purely client-side formatting control, we do not call external services.
+    -->
+    <external-service-usage enabled="false"></external-service-usage>
+    
+    <!-- 
+      The primary value we are formatting.
+      of-type-group="numbers" ensures we can bind it to Decimal, Whole, FP, and Currency fields.
+    -->
+    <property name="value" display-name-key="Value to Format" description-key="The number field value" of-type-group="numbers" usage="bound" required="true" />
+    
+    <!-- Configurable properties -->
+    <property name="threshold" display-name-key="Neutral Threshold" description-key="Value below which is red, and above which is green. Default is 0." of-type-group="numbers" usage="input" required="false" default-value="0" />
+    <property name="enablePlusSign" display-name-key="Enable Plus Sign" description-key="Prefix positive numbers with a '+' sign" of-type="TwoOptions" usage="input" required="false" default-value="false" />
+    
+    <property name="positiveColor" display-name-key="Positive Color" description-key="CSS valid color string for positive values (e.g. green, #00FF00)" of-type="SingleLine.Text" usage="input" required="false" default-value="green" />
+    <property name="negativeColor" display-name-key="Negative Color" description-key="CSS valid color string for negative values (e.g. red, #FF0000)" of-type="SingleLine.Text" usage="input" required="false" default-value="red" />
+    <property name="neutralColor" display-name-key="Neutral Color" description-key="CSS valid color string for zero/neutral/NaN (e.g. gray, #808080)" of-type="SingleLine.Text" usage="input" required="false" default-value="gray" />
+
+    <type-group name="numbers">
+      <type>Whole.None</type>
+      <type>Decimal</type>
+      <type>FP</type>
+      <type>Currency</type>
+    </type-group>
+
+    <resources>
+      <code path="index.ts" order="1"/>
+      <css path="css/GreenRedField.module.css" order="1" />
+    </resources>
+  </control>
+</manifest>
