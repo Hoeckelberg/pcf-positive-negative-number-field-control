@@ -36,4 +36,7 @@ Erstellt eine ordentliche Solution-Datei (.zip) mit festem Publisher zur manuell
    ```powershell
    dotnet build -c Release
    # Output: Solution\bin\Release\Solution.zip
-   ```
+### Versions-Update
+Wenn du eine neue Version bauen willst, erhöhe vorher die Version im `ControlManifest.Input.xml`. Das geht am schnellsten per Command im PCF-Ordner:
+```powershell
+pac pcf version --strategy manifest
